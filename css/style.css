@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb);
+  overflow: hidden;
+}
+
+.block {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.block::before,
+.block::after {
+  content: '';
+  border-radius: 50%;
+  width: 100%;
+  background: linear-gradient(to right bottom, rgba(255, 255, 255, .8), rgba(255, 255, 255, .3));
+  position: absolute;
+  bottom: 65%;
+  left: 55%;
+  /* transition: .5s; */
+  z-index: -1;
+  /* animation: rotate 3s infinite alternate; */
+}
+
+.block::before {
+  max-width: 22vw;
+  height: 22vw;
+  bottom: 65%;
+  left: 55%;
+  animation: rotate_scale 5s infinite;
+}
+
+.block::after {
+  max-width: 18vw;
+  height: 18vw;
+  animation: rotate 5s infinite;
+}
+
+/* Animation */
+@keyframes rotate {
+  0% {
+    bottom: 4%;
+    left: 25%;
+    transform: rotate(0) scale(1);
+  }
+
+  25% {
+    bottom: 50%;
+    left: 20%;
+    transform: rotate(0) scale(1);
+  }
+
+  50% {
+    bottom: 68%;
+    left: 57%;
+    transform: rotate(0) scale(1.2);
+  }
+
+  100% {
+    bottom: 4%;
+    left: 25%;
+    transform: rotate(0) scale(1);
+  }
+}
+
+@keyframes rotate_scale {
+  0% {
+    bottom: 65%;
+    left: 55%;
+    transform: rotate(0) scale(1);
+  }
+
+  25% {
+    bottom: -5%;
+    left: 75%;
+    transform: rotate(0) scale(1);
+  }
+
+  50% {
+    bottom: 4%;
+    left: 25%;
+    transform: rotate(0) scale(.8);
+  }
+
+  100% {
+    bottom: 65%;
+    left: 55%;
+    transform: rotate(0) scale(1);
+  }
+}
+
+@keyframes charging {
+  50% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* Animation */
+
+.card {
+  border-radius: 20px;
+  max-width: 350px;
+  width: 100%;
+  height: 450px;
+  background: #f3f3f3b5;
+  backdrop-filter: blur(8px);
+}
+
+.battery-shape {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.battery-border {
+  border: 3px solid #000;
+  border-radius: 10px;
+  width: 180px;
+  height: 80px;
+  position: relative;
+}
+
+.battery-content {
+  border-radius: 8px;
+  background: linear-gradient(to left, #626474, #004e92);
+  position: absolute;
+  inset: 4px;
+}
+
+.percent {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.isCharging {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  animation: charging 2s ease-in-out infinite;
+}
+
+
+/* Responsive Start */
+@media (max-width: 370px) {
+  .card {
+    width: 300px;
+  }
+
+  .isCharging {
+    font-size: 20px;
+  }
+}
+/* Responsive End */
